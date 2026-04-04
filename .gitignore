@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Tooling
+.mypy_cache/
+.pytest_cache/
+*.spec
+*.log
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup data — NEVER commit personal data
+*.sqlite
+*.db
+*.plist
+Manifest*
+Status.plist
+Info.plist

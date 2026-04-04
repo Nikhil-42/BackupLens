@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Premium warm gradient background -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffbf0"/>
+      <stop offset="50%" stop-color="#fff7e6"/>
+      <stop offset="100%" stop-color="#fef0d0"/>
+    </linearGradient>
+    <!-- Shield gradient - trustworthy teal-green -->
+    <linearGradient id="shield" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <!-- Phone body gradient - premium dark -->
+    <linearGradient id="phone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#374151"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+    <!-- Screen gradient - alive glow -->
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#f0fdf4"/>
+    </linearGradient>
+    <!-- Lens ring - warm amber gold -->
+    <linearGradient id="lens" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <!-- Soft drop shadow -->
+    <filter id="shadow" x="-15%" y="-10%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#00000018"/>
+    </filter>
+    <filter id="shadowSm" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00000015"/>
+    </filter>
+    <filter id="innerGlow" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Clip for screen content -->
+    <clipPath id="screenClip">
+      <rect x="209" y="122" width="62" height="108" rx="2"/>
+    </clipPath>
+  </defs>
+
+  <!-- === BACKGROUND === -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Subtle border -->
+  <rect x="2" y="2" width="508" height="508" rx="94" fill="none" stroke="#e8dcc0" stroke-width="2"/>
+
+  <!-- === SHIELD — wraps protectively around phone === -->
+  <path d="M240 60 L348 104 C352 106 356 112 356 116 L356 230 C356 290 310 340 240 375 C170 340 124 290 124 230 L124 116 C124 112 128 106 132 104 Z"
+        fill="url(#shield)" opacity="0.12"/>
+  <path d="M240 78 L334 116 C336 117 338 120 338 122 L338 224 C338 276 298 318 240 348 C182 318 142 276 142 224 L142 122 C142 120 144 117 146 116 Z"
+        fill="url(#shield)" filter="url(#shadow)"/>
+  <!-- Shield highlight -->
+  <path d="M240 78 L334 116 C336 117 338 120 338 122 L338 180 C290 170 240 78 240 78 Z"
+        fill="#ffffff" opacity="0.2"/>
+
+  <!-- === iPHONE — centered in shield === -->
+  <!-- Phone body -->
+  <rect x="203" y="100" width="74" height="140" rx="14" fill="url(#phone)" filter="url(#shadowSm)"/>
+  <!-- Side button -->
+  <rect x="277" y="136" width="3" height="18" rx="1.5" fill="#4b5563"/>
+  <!-- Volume buttons -->
+  <rect x="200" y="130" width="3" height="12" rx="1.5" fill="#4b5563"/>
+  <rect x="200" y="148" width="3" height="12" rx="1.5" fill="#4b5563"/>
+  <!-- Dynamic Island / notch -->
+  <rect x="228" y="105" width="24" height="8" rx="4" fill="#111827"/>
+  <!-- Camera dot -->
+  <circle cx="246" cy="109" r="2.5" fill="#1f2937" stroke="#374151" stroke-width="0.5"/>
+  <!-- Screen -->
+  <rect x="209" y="118" width="62" height="112" rx="4" fill="url(#screen)"/>
+
+  <!-- Screen content — file list (clipped) -->
+  <g clip-path="url(#screenClip)">
+    <!-- Status bar -->
+    <rect x="209" y="122" width="62" height="10" fill="#059669" opacity="0.1"/>
+    <text x="215" y="130" font-family="SF Pro, Segoe UI, Arial" font-size="6" fill="#059669" font-weight="600">BackupLens</text>
+    <!-- Divider -->
+    <line x1="209" y1="133" x2="271" y2="133" stroke="#d1d5db" stroke-width="0.5"/>
+    <!-- File rows with icons -->
+    <circle cx="217" cy="141" r="3" fill="#60a5fa" opacity="0.7"/>
+    <rect x="223" y="139" width="38" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="217" cy="153" r="3" fill="#a78bfa" opacity="0.7"/>
+    <rect x="223" y="151" width="32" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="217" cy="165" r="3" fill="#fb923c" opacity="0.7"/>
+    <rect x="223" y="163" width="42" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="217" cy="177" r="3" fill="#34d399" opacity="0.7"/>
+    <rect x="223" y="175" width="28" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="217" cy="189" r="3" fill="#f472b6" opacity="0.7"/>
+    <rect x="223" y="187" width="36" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="217" cy="201" r="3" fill="#fbbf24" opacity="0.7"/>
+    <rect x="223" y="199" width="30" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="217" cy="213" r="3" fill="#60a5fa" opacity="0.7"/>
+    <rect x="223" y="211" width="40" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+  </g>
+  <!-- Home indicator -->
+  <rect x="225" y="228" width="30" height="3" rx="1.5" fill="#6b7280" opacity="0.4"/>
+
+  <!-- === MAGNIFYING GLASS — overlapping bottom-right of phone === -->
+  <g filter="url(#shadow)">
+    <!-- Handle -->
+    <line x1="332" y1="298" x2="368" y2="338" stroke="url(#lens)" stroke-width="14" stroke-linecap="round"/>
+    <!-- Lens outer ring -->
+    <circle cx="304" cy="268" r="50" fill="#ffffff"/>
+    <circle cx="304" cy="268" r="50" fill="none" stroke="url(#lens)" stroke-width="8"/>
+    <!-- Lens inner - slight warm tint -->
+    <circle cx="304" cy="268" r="40" fill="#fffdf7" opacity="0.9"/>
+  </g>
+  <!-- Lens shine -->
+  <path d="M278 248 Q288 236 302 242" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+
+  <!-- Inside lens: shield + checkmark (trust symbol) -->
+  <path d="M304 238 L326 248 C326 248 328 270 318 282 C308 294 304 298 304 298 C304 298 300 294 290 282 C280 270 282 248 282 248 Z"
+        fill="#059669" opacity="0.15"/>
+  <path d="M304 245 L320 252 C320 252 322 268 314 278 C306 288 304 291 304 291 C304 291 302 288 294 278 C286 268 288 252 288 252 Z"
+        fill="#34d399" opacity="0.6"/>
+  <!-- Checkmark inside mini shield -->
+  <path d="M296 268 L302 274 L314 260" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- === TYPOGRAPHY === -->
+  <!-- App name -->
+  <text x="240" y="415" text-anchor="middle" font-family="SF Pro Display, Segoe UI, Arial, sans-serif" font-weight="800" font-size="50" letter-spacing="-1">
+    <tspan fill="#d97706">Backup</tspan><tspan fill="#059669">Lens</tspan>
+  </text>
+  <!-- Tagline -->
+  <text x="240" y="444" text-anchor="middle" font-family="SF Pro Text, Segoe UI, Arial, sans-serif" font-weight="500" font-size="15" fill="#92795a" letter-spacing="3">
+    YOUR DATA. YOUR EYES ONLY.
+  </text>
+
+  <!-- Subtle trust badges bottom -->
+  <g opacity="0.5">
+    <!-- Lock icon -->
+    <rect x="148" y="462" width="12" height="10" rx="2" fill="none" stroke="#059669" stroke-width="1.5"/>
+    <path d="M150 462 L150 458 C150 454 156 454 156 454 L158 454 C158 454 160 454 160 458 L160 462" fill="none" stroke="#059669" stroke-width="1.5"/>
+    <text x="165" y="471" font-family="SF Pro Text, Segoe UI, Arial" font-size="10" fill="#92795a">100% Offline</text>
+    <!-- Shield icon -->
+    <path d="M244 458 L252 462 L252 468 C252 472 248 474 244 476 C240 474 236 472 236 468 L236 462 Z" fill="none" stroke="#059669" stroke-width="1.5"/>
+    <text x="257" y="471" font-family="SF Pro Text, Segoe UI, Arial" font-size="10" fill="#92795a">Open Source</text>
+    <!-- Eye icon -->
+    <path d="M318 466 C324 460 336 460 342 466 C336 472 324 472 318 466 Z" fill="none" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="330" cy="466" r="2.5" fill="none" stroke="#059669" stroke-width="1.5"/>
+    <text x="347" y="471" font-family="SF Pro Text, Segoe UI, Arial" font-size="10" fill="#92795a">No Tracking</text>
+  </g>
+</svg>
