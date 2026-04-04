@@ -17,6 +17,10 @@
   <img src="https://img.shields.io/badge/python-3.8%2B-blue" alt="Python">
 </p>
 
+<p align="center">
+  <img src="assets/screenshot.png" alt="BackupLens Screenshot" width="800">
+</p>
+
 ---
 
 ## Why BackupLens?

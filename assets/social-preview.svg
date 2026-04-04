@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffbf0"/>
+      <stop offset="50%" stop-color="#fff7e6"/>
+      <stop offset="100%" stop-color="#fef0d0"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="lens" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="phone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#374151"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#f0fdf4"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-10%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#00000018"/>
+    </filter>
+    <filter id="shadowSm" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00000015"/>
+    </filter>
+    <clipPath id="screenClip">
+      <rect x="159" y="137" width="62" height="108" rx="2"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <!-- LEFT SIDE: Logo/Icon -->
+
+  <!-- Shield -->
+  <path d="M190 75 L298 119 C302 121 306 127 306 131 L306 245 C306 305 260 355 190 390 C120 355 74 305 74 245 L74 131 C74 127 78 121 82 119 Z"
+        fill="url(#shield)" opacity="0.12"/>
+  <path d="M190 93 L284 131 C286 132 288 135 288 137 L288 239 C288 291 248 333 190 363 C132 333 92 291 92 239 L92 137 C92 135 94 132 96 131 Z"
+        fill="url(#shield)" filter="url(#shadow)"/>
+  <path d="M190 93 L284 131 C286 132 288 135 288 137 L288 195 C240 185 190 93 190 93 Z"
+        fill="#ffffff" opacity="0.2"/>
+
+  <!-- Phone -->
+  <rect x="153" y="115" width="74" height="140" rx="14" fill="url(#phone)" filter="url(#shadowSm)"/>
+  <rect x="177" y="120" width="26" height="8" rx="4" fill="#111827"/>
+  <rect x="159" y="133" width="62" height="112" rx="4" fill="url(#screen)"/>
+  <g clip-path="url(#screenClip)">
+    <rect x="159" y="137" width="62" height="10" fill="#059669" opacity="0.1"/>
+    <text x="165" y="145" font-family="Arial" font-size="6" fill="#059669" font-weight="600">BackupLens</text>
+    <line x1="159" y1="148" x2="221" y2="148" stroke="#d1d5db" stroke-width="0.5"/>
+    <circle cx="167" cy="156" r="3" fill="#60a5fa" opacity="0.7"/>
+    <rect x="173" y="154" width="38" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="167" cy="168" r="3" fill="#a78bfa" opacity="0.7"/>
+    <rect x="173" y="166" width="32" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="167" cy="180" r="3" fill="#fb923c" opacity="0.7"/>
+    <rect x="173" y="178" width="42" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="167" cy="192" r="3" fill="#34d399" opacity="0.7"/>
+    <rect x="173" y="190" width="28" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="167" cy="204" r="3" fill="#f472b6" opacity="0.7"/>
+    <rect x="173" y="202" width="36" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="167" cy="216" r="3" fill="#fbbf24" opacity="0.7"/>
+    <rect x="173" y="214" width="30" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+    <circle cx="167" cy="228" r="3" fill="#60a5fa" opacity="0.7"/>
+    <rect x="173" y="226" width="40" height="4" rx="1" fill="#9ca3af" opacity="0.5"/>
+  </g>
+  <rect x="175" y="243" width="30" height="3" rx="1.5" fill="#6b7280" opacity="0.4"/>
+
+  <!-- Magnifying glass -->
+  <g filter="url(#shadow)">
+    <line x1="282" y1="313" x2="318" y2="353" stroke="url(#lens)" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="254" cy="283" r="50" fill="#ffffff"/>
+    <circle cx="254" cy="283" r="50" fill="none" stroke="url(#lens)" stroke-width="8"/>
+    <circle cx="254" cy="283" r="40" fill="#fffdf7" opacity="0.9"/>
+  </g>
+  <path d="M228 263 Q238 251 252 257" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <!-- Mini shield + check inside lens -->
+  <path d="M254 260 L270 267 C270 267 272 283 264 293 C256 303 254 306 254 306 C254 306 252 303 244 293 C236 283 238 267 238 267 Z"
+        fill="#34d399" opacity="0.6"/>
+  <path d="M246 283 L252 289 L264 275" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- RIGHT SIDE: Text content -->
+
+  <!-- App name -->
+  <text x="500" y="200" font-family="Arial, sans-serif" font-weight="800" font-size="80" letter-spacing="-2">
+    <tspan fill="#d97706">Backup</tspan><tspan fill="#059669">Lens</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="500" y="250" font-family="Arial, sans-serif" font-weight="500" font-size="28" fill="#6b7280">
+    Your data. Your eyes only.
+  </text>
+
+  <!-- Description -->
+  <text x="500" y="310" font-family="Arial, sans-serif" font-size="22" fill="#4b5563">
+    Free, open-source GUI to decrypt, browse, and extract
+  </text>
+  <text x="500" y="342" font-family="Arial, sans-serif" font-size="22" fill="#4b5563">
+    files from encrypted iPhone/iPad backups.
+  </text>
+
+  <!-- Trust badges -->
+  <g transform="translate(500, 390)">
+    <!-- 100% Offline -->
+    <rect x="0" y="0" width="160" height="40" rx="20" fill="#d1fae5"/>
+    <rect x="12" y="12" width="12" height="10" rx="2" fill="none" stroke="#059669" stroke-width="2"/>
+    <path d="M14 12 L14 8 C14 4 20 4 20 4 L22 4 C22 4 24 4 24 8 L24 12" fill="none" stroke="#059669" stroke-width="2"/>
+    <text x="34" y="25" font-family="Arial" font-size="15" font-weight="600" fill="#059669">100% Offline</text>
+
+    <!-- Open Source -->
+    <rect x="175" y="0" width="155" height="40" rx="20" fill="#d1fae5"/>
+    <path d="M192 15 L200 19 L200 25 C200 29 196 31 192 33 C188 31 184 29 184 25 L184 19 Z" fill="none" stroke="#059669" stroke-width="2"/>
+    <text x="208" y="25" font-family="Arial" font-size="15" font-weight="600" fill="#059669">Open Source</text>
+
+    <!-- No Tracking -->
+    <rect x="345" y="0" width="155" height="40" rx="20" fill="#d1fae5"/>
+    <path d="M360 20 C366 14 378 14 384 20 C378 26 366 26 360 20 Z" fill="none" stroke="#059669" stroke-width="2"/>
+    <circle cx="372" cy="20" r="3" fill="none" stroke="#059669" stroke-width="2"/>
+    <text x="392" y="25" font-family="Arial" font-size="15" font-weight="600" fill="#059669">No Tracking</text>
+  </g>
+
+  <!-- Platform badges -->
+  <text x="500" y="480" font-family="Arial, sans-serif" font-size="18" fill="#9ca3af">
+    Windows  |  macOS  |  Linux  |  Python 3.8+  |  MIT License
+  </text>
+
+  <!-- GitHub URL -->
+  <text x="500" y="560" font-family="Arial, sans-serif" font-size="20" fill="#d97706" font-weight="600">
+    github.com/mrgunes/BackupLens
+  </text>
+</svg>
