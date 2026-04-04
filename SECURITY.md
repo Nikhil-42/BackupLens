@@ -49,7 +49,7 @@ It does **not** access iCloud backups, which are stored on Apple's servers.
 If you discover a security vulnerability in BackupLens, please report it responsibly:
 
 1. **Do NOT open a public GitHub issue** for security vulnerabilities.
-2. Use [GitHub's private security advisory feature](https://github.com/eyyupgunes/BackupLens/security/advisories/new) to report the issue.
+2. Use [GitHub's private security advisory feature](https://github.com/mrgunes/BackupLens/security/advisories/new) to report the issue.
 3. Include steps to reproduce, the potential impact, and any suggested fixes.
 
 We will respond within 48 hours and work with you to address the issue before any public disclosure.

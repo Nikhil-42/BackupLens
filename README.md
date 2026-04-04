@@ -63,7 +63,7 @@ You made an encrypted iPhone backup with iTunes, Finder, or the Apple Devices ap
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/eyyupgunes/BackupLens.git
+git clone https://github.com/mrgunes/BackupLens.git
 cd BackupLens
 
 # 2. Install dependencies (just one!)
@@ -246,8 +246,8 @@ BackupLens is built on top of the excellent [iphone_backup_decrypt](https://gith
 ---
 
 <p align="center">
-  <strong>Built with care by <a href="https://github.com/eyyupgunes">Eyyup (Eric) Gunes</a></strong><br>
+  <strong>Built with care by <a href="https://github.com/mrgunes">Eyyup (Eric) Gunes</a></strong><br>
   <sub>Because your data should be yours — no subscriptions, no surveillance, no strings attached.</sub><br><br>
-  <strong>Did BackupLens save your data?</strong> Give it a <a href="https://github.com/eyyupgunes/BackupLens">star</a> so others can find it too.<br>
-  <a href="https://github.com/eyyupgunes">Follow @eyyupgunes</a> for more privacy-first tools.
+  <strong>Did BackupLens save your data?</strong> Give it a <a href="https://github.com/mrgunes/BackupLens">star</a> so others can find it too.<br>
+  <a href="https://github.com/mrgunes">Follow @mrgunes</a> for more privacy-first tools.
 </p>

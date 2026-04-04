@@ -7,7 +7,7 @@ from encrypted iPhone/iPad backups made by iTunes or Finder.
 100% offline. No tracking. No telemetry. No network calls.
 Your backup password never leaves your machine.
 
-https://github.com/eyyupgunes/BackupLens
+https://github.com/mrgunes/BackupLens
 """
 
 import tkinter as tk
