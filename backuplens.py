@@ -18,8 +18,13 @@ import plistlib
 import platform
 import shutil
 import sqlite3
+import subprocess
+import tempfile
+import time
 from contextlib import contextmanager
 from datetime import datetime
+
+FUSE_SUPPORTED_PLATFORMS = ("Linux", "Darwin")
 
 __version__ = "1.0.0"
 APP_NAME = "BackupLens"
@@ -87,8 +92,14 @@ class BackupLens:
         self.backup_dir = None
         self.file_list = []
 
+        self.fuse_mountpoint = None
+        self.fuse_cache_dir = None
+        self.fuse_thread = None
+        self.mount_btn = None
+
         self._apply_style()
         self._build_ui()
+        self.root.protocol("WM_DELETE_WINDOW", self._on_close)
         self._auto_detect_backup()
 
     # ── Theming ──────────────────────────────────────────────
@@ -257,6 +268,12 @@ class BackupLens:
                     command=self._extract_all_view).pack(side="right", padx=2)
         ttk.Button(toolbar, text="Extract Entire Backup",
                     command=self._extract_full_backup).pack(side="right", padx=6)
+        if platform.system() in FUSE_SUPPORTED_PLATFORMS:
+            self.mount_btn = ttk.Button(
+                toolbar, text="Mount as Filesystem (FUSE)",
+                command=self._toggle_fuse_mount,
+            )
+            self.mount_btn.pack(side="right", padx=6)
 
         cols = ("domain", "path", "size", "modified")
         self.file_tree = ttk.Treeview(right_frame, columns=cols,
@@ -804,6 +821,108 @@ class BackupLens:
         self.root.after(0, lambda: messagebox.showinfo(
             "Extraction Complete", msg
         ))
+
+    # ── FUSE mount ───────────────────────────────────────────
+
+    def _toggle_fuse_mount(self):
+        if self.fuse_mountpoint:
+            self._unmount_fuse()
+        else:
+            self._mount_fuse()
+
+    def _mount_fuse(self):
+        if not self.backup:
+            messagebox.showinfo("Info", "Open a backup first.")
+            return
+        try:
+            import backuplens_fuse
+        except Exception as e:
+            messagebox.showerror(
+                "Missing Dependency",
+                "Mounting requires the 'fusepy' package and libfuse.\n\n"
+                "Install with:\n  pip install fusepy\n\n"
+                "Linux: libfuse2/libfuse3 is usually preinstalled.\n"
+                "macOS: install macFUSE from https://osxfuse.github.io/\n\n"
+                f"Details: {e}",
+            )
+            return
+
+        mountpoint = filedialog.askdirectory(
+            title="Select an EMPTY folder to mount the backup on"
+        )
+        if not mountpoint:
+            return
+        if os.listdir(mountpoint):
+            messagebox.showerror(
+                "Error", "The mount point folder must be empty."
+            )
+            return
+
+        cache_dir = tempfile.mkdtemp(prefix="backuplens_fuse_cache_")
+        mount_time = time.time()
+
+        def run():
+            try:
+                backuplens_fuse.mount(
+                    self.backup, mountpoint, cache_dir, mount_time,
+                    foreground=True,
+                )
+            except Exception as e:
+                self.root.after(0, lambda: messagebox.showerror(
+                    "Mount Failed", str(e)
+                ))
+            finally:
+                self.root.after(0, self._on_fuse_stopped)
+
+        self.fuse_mountpoint = mountpoint
+        self.fuse_cache_dir = cache_dir
+        self.fuse_thread = threading.Thread(target=run, daemon=True)
+        self.fuse_thread.start()
+        self.mount_btn.configure(text="Unmount Filesystem")
+        self.status_var.set(f"Mounted at {mountpoint}")
+
+    def _unmount_syscall(self, mountpoint):
+        if platform.system() == "Darwin":
+            subprocess.run(["umount", mountpoint], check=True)
+        else:
+            cmd = shutil.which("fusermount3") or shutil.which("fusermount") \
+                or "umount"
+            subprocess.run([cmd, "-u", mountpoint], check=True)
+
+    def _unmount_fuse(self):
+        if not self.fuse_mountpoint:
+            return
+        self.status_var.set("Unmounting...")
+        self.root.update_idletasks()
+        try:
+            self._unmount_syscall(self.fuse_mountpoint)
+        except Exception as e:
+            messagebox.showerror("Unmount Failed", str(e))
+            self.status_var.set("Unmount failed. See error above.")
+            return
+        # The blocking FUSE() call in the mount thread returns once the
+        # kernel finishes the unmount; _on_fuse_stopped resets UI state then.
+
+    def _on_fuse_stopped(self):
+        cache_dir = self.fuse_cache_dir
+        self.fuse_mountpoint = None
+        self.fuse_cache_dir = None
+        self.fuse_thread = None
+        if cache_dir:
+            shutil.rmtree(cache_dir, ignore_errors=True)
+        if self.mount_btn:
+            self.mount_btn.configure(text="Mount as Filesystem (FUSE)")
+        self.status_var.set("Filesystem unmounted.")
+
+    def _on_close(self):
+        if self.fuse_mountpoint:
+            try:
+                self._unmount_syscall(self.fuse_mountpoint)
+            except Exception:
+                pass
+            if self.fuse_cache_dir:
+                shutil.rmtree(self.fuse_cache_dir, ignore_errors=True)
+        self.root.destroy()
 
     # ── Helpers ──────────────────────────────────────────────
 
