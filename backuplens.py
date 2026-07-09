@@ -35,11 +35,13 @@ class PlainBackup:
 
     def __init__(self, *, backup_directory):
         self._backup_directory = backup_directory
-        self._manifest_db_path = os.path.join(backup_directory, "Manifest.db")
+        _manifest_db_path = os.path.expanduser(os.path.join(backup_directory, "Manifest.db"))
+        self._manifest_db_uri = f"file:{_manifest_db_path}?mode=ro&immutable=1"
+
 
     @contextmanager
     def manifest_db_cursor(self):
-        conn = sqlite3.connect(self._manifest_db_path)
+        conn = sqlite3.connect(self._manifest_db_uri, uri=True)
         try:
             cur = conn.cursor()
             yield cur
