@@ -1,1 +1,2 @@
 iphone_backup_decrypt>=0.9.0
+fusepy>=3.0.0
